@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in or create a member account with Champions for Mental Health." />
+    <title>Sign in | Champions for Mental Health</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="account.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">
+          <span class="logo-mark">C</span>
+          <span>CHAMPIONS FOR MENTAL HEALTH</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="programmes.html">Services</a>
+          <a href="team.html">Our Team</a>
+          <a href="research.html">Research</a>
+          <a href="news.html">Resources</a>
+          <a href="donate.html">Donation</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions"><a class="button" href="contact.html">Get Help</a></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="account">
+        <div class="account-layout">
+          <!-- Left: green panel. Its text changes with the mode (see account.js) -->
+          <aside class="account-panel">
+            <div class="account-panel-inner">
+              <span class="eyebrow eyebrow-light">Member area</span>
+              <h1 class="account-panel-title" id="panel-title">Welcome back</h1>
+              <p class="account-panel-text" id="panel-text">
+                Sign in to access your member account.
+              </p>
+            </div>
+          </aside>
+
+          <!-- Right: the forms -->
+          <div class="account-form-area">
+            <div class="account-card">
+              <!-- Switch between the two forms -->
+              <div class="account-tabs">
+                <button
+                  class="account-tab is-active"
+                  type="button"
+                  data-mode="signin"
+                  aria-pressed="true"
+                >
+                  Sign in
+                </button>
+                <button class="account-tab" type="button" data-mode="register" aria-pressed="false">
+                  Register
+                </button>
+              </div>
+
+              <!-- Sign in form -->
+              <form class="account-form demo-form" id="form-signin">
+                <h2 class="account-title">Sign in</h2>
+                <div class="field">
+                  <label for="signin-email">Email address</label>
+                  <input id="signin-email" type="email" autocomplete="email" required />
+                </div>
+                <div class="field">
+                  <label for="signin-password">Password</label>
+                  <input
+                    id="signin-password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                  />
+                </div>
+                <button class="button" type="submit">Sign in</button>
+                <div class="form-message">
+                  Front-end demonstration only. Secure authentication has not been connected.
+                </div>
+              </form>
+
+              <!-- Register form -->
+              <form class="account-form demo-form" id="form-register" hidden>
+                <h2 class="account-title">Create your account</h2>
+                <div class="field">
+                  <label for="register-name">Full name</label>
+                  <input id="register-name" type="text" autocomplete="name" required />
+                </div>
+                <div class="field">
+                  <label for="register-email">Email address</label>
+                  <input id="register-email" type="email" autocomplete="email" required />
+                </div>
+                <div class="field">
+                  <label for="register-password">Password</label>
+                  <input
+                    id="register-password"
+                    type="password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    required
+                  />
+                </div>
+                <button class="button" type="submit">Create account</button>
+                <div class="form-message">
+                  Front-end demonstration only. Registration needs secure authentication before
+                  launch.
+                </div>
+              </form>
+
+              <!-- Social options (need Google / Facebook set up before they work) -->
+              <div class="account-divider" id="social-label">Or sign in with</div>
+              <div class="account-social">
+                <button class="social-button" type="button" data-provider="Google">
+                  <span class="social-icon">G</span>
+                  Google
+                </button>
+                <button class="social-button" type="button" data-provider="Facebook">
+                  <span class="social-icon">f</span>
+                  Facebook
+                </button>
+              </div>
+              <div class="form-message" id="social-message"></div>
+
+              <!-- Link to the other form -->
+              <p class="account-switch" data-for="signin">
+                Don't have an account?
+                <button class="link-button" type="button" data-mode="register">Register</button>
+              </p>
+              <p class="account-switch" data-for="register" hidden>
+                Already have an account?
+                <button class="link-button" type="button" data-mode="signin">Sign in</button>
+              </p>
+
+              <p class="form-note">
+                Secure authentication, password handling and account management must be
+                implemented before launch.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html">
+              <span class="logo-mark">C</span>
+              <span>CHAMPIONS FOR MENTAL HEALTH</span>
+            </a>
+            <p>
+              Advocacy, education and research for a world where mental health is understood and
+              supported.
+            </p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <div class="footer-links">
+              <a href="about.html">About us</a>
+              <a href="programmes.html">Programmes</a>
+              <a href="research.html">Research</a>
+              <a href="team.html">Leadership team</a>
+            </div>
+          </div>
+          <div>
+            <h4>Get involved</h4>
+            <div class="footer-links">
+              <a href="volunteer.html">Volunteer</a>
+              <a href="donate.html">Donate</a>
+              <a href="news.html">News & insights</a>
+              <a href="account.html?mode=register">Create an account</a>
+              <a href="account.html?mode=signin">Member login</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <div class="footer-links">
+              <a href="contact.html">Contact us</a>
+              <a href="contact.html">Email: add organisation email</a>
+              <a href="contact.html">Phone: add contact number</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          ©
+          <span class="year"></span>
+          Champions for Mental Health. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="account.js"></script>
+  </body>
+</html>

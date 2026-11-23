@@ -125,7 +125,7 @@
   background: var(--line);
 }
 
-/* Google / Facebook buttons */
+/* Google button */
 .account-social {
   display: grid;
   gap: 10px;

@@ -8,14 +8,21 @@
       content="Champions for Mental Health — advocacy, education and research."
     />
     <title>Home | Champions for Mental Health</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#456416" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Champions for Mental Health" />
+    <meta property="og:title" content="Home | Champions for Mental Health" />
+    <meta property="og:description" content="Champions for Mental Health — advocacy, education and research." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="logo" href="index.html">
-          <span class="logo-mark">C</span>
-          <span>CHAMPIONS FOR MENTAL HEALTH</span>
+          <img src="images/logo.png" alt="Champions for Mental Health International" />
         </a>
         <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
         <nav class="nav-links">
@@ -28,10 +35,13 @@
           <a href="donate.html">Donation</a>
           <a href="contact.html">Contact</a>
         </nav>
-        <div class="nav-actions"><a class="button" href="contact.html">Get Help</a></div>
+        <div class="nav-actions">
+          <a class="button button-cta nav-join" href="account.html?mode=register">Join</a>
+          <a class="button nav-help" href="contact.html">Get Help</a>
+        </div>
       </div>
     </header>
-    <main>
+    <main id="main">
       <section class="hero">
         <div class="container hero-inner">
           <div class="hero-copy">
@@ -299,6 +309,22 @@
         </div>
       </section>
 
+      <section class="section month">
+        <div class="container split">
+          <div class="month-text">
+            <span class="eyebrow eyebrow-light">Mental Health Month</span>
+            <h2>A month for open conversations.</h2>
+            <p>
+              Campaigns and activities that open up conversations about mental health and
+              encourage people to seek support.
+            </p>
+            <a class="button button-cta" href="programmes.html">See the programme</a>
+          </div>
+          <div class="photo-placeholder month-photo">
+            <span class="photo-note">Photo to be supplied</span>
+          </div>
+        </div>
+      </section>
       <section class="section goal">
         <div class="container split">
           <div>
@@ -465,7 +491,7 @@
             <p>Be part of a community working towards a more understanding and supportive world.</p>
           </div>
           <div class="button-row">
-            <a class="button button-cta" href="register.html">Join us</a>
+            <a class="button button-cta" href="account.html?mode=register">Join us</a>
             <a class="button button-outline-light" href="donate.html">Make a donation</a>
           </div>
         </div>
@@ -476,8 +502,7 @@
         <div class="footer-grid">
           <div>
             <a class="logo" href="index.html">
-              <span class="logo-mark">C</span>
-              <span>CHAMPIONS FOR MENTAL HEALTH</span>
+              <img src="images/logo.png" alt="Champions for Mental Health International" />
             </a>
             <p>
               Advocacy, education and research for a world where mental health is understood and
@@ -499,8 +524,9 @@
               <a href="volunteer.html">Volunteer</a>
               <a href="donate.html">Donate</a>
               <a href="news.html">News & insights</a>
-              <a href="register.html">Create an account</a>
-              <a href="login.html">Member login</a>
+              <a href="newsletter.html">Newsletter</a>
+              <a href="account.html?mode=register">Create an account</a>
+              <a href="account.html?mode=signin">Member login</a>
             </div>
           </div>
           <div>

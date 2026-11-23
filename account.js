@@ -82,19 +82,98 @@ document.querySelectorAll("[data-mode]").forEach(button => {
 });
 
 
-// Google / Facebook: not connected yet, so say so instead of pretending
+// --------------------------------------------------------------------------
+// Supabase connection (the URL and key live in supabase-config.js)
+// --------------------------------------------------------------------------
+const isConfigured = typeof SUPABASE_KEY === "string" && !SUPABASE_KEY.startsWith("PASTE");
+const db = isConfigured && window.supabase
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+  : null;
+
+// Show a message under a form (isError = red text)
+function showMessage(element, text, isError) {
+  element.textContent = text;
+  element.classList.toggle("is-error", Boolean(isError));
+  element.classList.add("show");
+}
+
+// Used when the keys have not been added yet
+const NOT_CONNECTED = "Sign-in is not connected yet. Add the Supabase key in supabase-config.js.";
+
+
+// --------------------------------------------------------------------------
+// Register
+// --------------------------------------------------------------------------
+document.getElementById("form-register").addEventListener("submit", async event => {
+  event.preventDefault();
+  const message = event.target.querySelector(".form-message");
+  if (!db) return showMessage(message, NOT_CONNECTED, true);
+
+  const { data, error } = await db.auth.signUp({
+    email: document.getElementById("register-email").value,
+    password: document.getElementById("register-password").value,
+    options: {
+      data: { full_name: document.getElementById("register-name").value },
+      emailRedirectTo: window.location.origin + window.location.pathname,
+    },
+  });
+
+  if (error) return showMessage(message, error.message, true);
+  if (data.session) {
+    window.location.href = "profile.html";
+    return;
+  }
+  showMessage(message, "Account created. Check your email to confirm it, then sign in.");
+});
+
+
+// --------------------------------------------------------------------------
+// Sign in
+// --------------------------------------------------------------------------
+document.getElementById("form-signin").addEventListener("submit", async event => {
+  event.preventDefault();
+  const message = event.target.querySelector(".form-message");
+  if (!db) return showMessage(message, NOT_CONNECTED, true);
+
+  const { error } = await db.auth.signInWithPassword({
+    email: document.getElementById("signin-email").value,
+    password: document.getElementById("signin-password").value,
+  });
+
+  if (error) return showMessage(message, error.message, true);
+  window.location.href = "profile.html";
+});
+
+
+// --------------------------------------------------------------------------
+// Google
+// --------------------------------------------------------------------------
 document.querySelectorAll(".social-button").forEach(button => {
-  button.addEventListener("click", () => {
-    socialMessage.textContent =
-      "Front-end demonstration only. " +
-      button.dataset.provider +
-      " sign-in has not been connected.";
-    socialMessage.classList.add("show");
+  button.addEventListener("click", async () => {
+    if (!db) return showMessage(socialMessage, NOT_CONNECTED, true);
+
+    const { error } = await db.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: window.location.origin + window.location.pathname },
+    });
+    if (error) showMessage(socialMessage, error.message, true);
   });
 });
+
+
+// --------------------------------------------------------------------------
+// Signed in? Go to the member profile page.
+// (Also runs when someone returns here from the confirmation email or from Google.)
+// --------------------------------------------------------------------------
+async function showSession() {
+  if (!db) return;
+  const { data } = await db.auth.getSession();
+  if (data.session) window.location.href = "profile.html";
+}
 
 
 // Pick the starting mode from the address: ?mode=register (or #register)
 const params = new URLSearchParams(window.location.search);
 const startMode = params.get("mode") || window.location.hash.replace("#", "");
 setMode(startMode);
+showSession();

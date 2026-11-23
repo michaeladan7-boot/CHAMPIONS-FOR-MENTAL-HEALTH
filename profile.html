@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Manage your Champions for Mental Health member profile."
+    />
+    <title>My profile | Champions for Mental Health</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#456416" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Champions for Mental Health" />
+    <meta property="og:title" content="My profile | Champions for Mental Health" />
+    <meta property="og:description" content="Manage your Champions for Mental Health member profile." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="member.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">
+          <img src="images/logo.png" alt="Champions for Mental Health International" />
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="programmes.html">Services</a>
+          <a href="team.html">Our Team</a>
+          <a href="research.html">Research</a>
+          <a href="news.html">Resources</a>
+          <a href="donate.html">Donation</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button button-cta nav-join" href="account.html?mode=register">Join</a>
+          <a class="button nav-help" href="contact.html">Get Help</a>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <!-- Shown only after the profile is loaded (see member.js) -->
+      <section class="section member">
+        <div class="container member-layout" id="member-content" hidden>
+
+          <!-- Summary and quick links -->
+          <aside class="member-aside">
+            <div class="card member-summary">
+              <div class="member-avatar" id="member-avatar">?</div>
+              <h1 class="member-name" id="member-name">Your profile</h1>
+              <p class="member-email" id="member-email"></p>
+              <p class="member-since" id="member-since"></p>
+              <button class="button button-outline" type="button" id="member-signout">Sign out</button>
+            </div>
+            <div class="card member-links">
+              <h2>Get involved</h2>
+              <a class="text-link" href="volunteer.html">Volunteer with us →</a>
+              <a class="text-link" href="donate.html">Make a donation →</a>
+              <a class="text-link" href="newsletter.html">Join the newsletter →</a>
+              <a class="text-link" href="contact.html">Contact us →</a>
+            </div>
+          </aside>
+
+          <!-- Edit details and password -->
+          <div class="member-main">
+            <span class="eyebrow">My account</span>
+            <h2 class="member-title">Your profile</h2>
+
+            <form class="form-card" id="member-details-form">
+              <h3>Personal details</h3>
+              <div class="field">
+                <label for="member-fullname">Full name</label>
+                <input id="member-fullname" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="member-email-field">Email address</label>
+                <input id="member-email-field" type="email" disabled />
+                <p class="form-note">Your email is used to sign in and cannot be changed here.</p>
+              </div>
+              <button class="button" type="submit">Save changes</button>
+              <div class="form-message"></div>
+            </form>
+
+            <form class="form-card" id="member-password-form">
+              <h3>Change password</h3>
+              <div class="field">
+                <label for="member-password">New password</label>
+                <input id="member-password" type="password" autocomplete="new-password" minlength="8" required />
+              </div>
+              <div class="field">
+                <label for="member-password-confirm">Confirm new password</label>
+                <input id="member-password-confirm" type="password" autocomplete="new-password" minlength="8" required />
+              </div>
+              <button class="button" type="submit">Update password</button>
+              <div class="form-message"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Shown while loading, or if nobody is signed in -->
+        <div class="container container-narrow member-status" id="member-status">
+          <p>Loading your profile…</p>
+        </div>
+      </section>
+    </main>
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Join us. Let's change the world.</h2>
+            <p>Be part of a community working towards a more understanding and supportive world.</p>
+          </div>
+          <div class="button-row">
+            <a class="button button-cta" href="account.html?mode=register">Join us</a>
+            <a class="button button-outline-light" href="donate.html">Make a donation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="logo" href="index.html">
+              <img src="images/logo.png" alt="Champions for Mental Health International" />
+            </a>
+            <p>
+              Advocacy, education and research for a world where mental health is understood and
+              supported.
+            </p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <div class="footer-links">
+              <a href="about.html">About us</a>
+              <a href="programmes.html">Programmes</a>
+              <a href="research.html">Research</a>
+              <a href="team.html">Leadership team</a>
+            </div>
+          </div>
+          <div>
+            <h4>Get involved</h4>
+            <div class="footer-links">
+              <a href="volunteer.html">Volunteer</a>
+              <a href="donate.html">Donate</a>
+              <a href="news.html">News & insights</a>
+              <a class="active" href="newsletter.html">Newsletter</a>
+              <a href="account.html?mode=register">Create an account</a>
+              <a href="account.html?mode=signin">Member login</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <div class="footer-links">
+              <a href="contact.html">Contact us</a>
+              <a href="contact.html">Email: add organisation email</a>
+              <a href="contact.html">Phone: add contact number</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          ©
+          <span class="year"></span>
+          Champions for Mental Health. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="member.js"></script>
+  </body>
+</html>

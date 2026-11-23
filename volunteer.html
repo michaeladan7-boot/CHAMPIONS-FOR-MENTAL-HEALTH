@@ -8,14 +8,21 @@
       content="Share your time, skills or lived experience expertise to support mental health advocacy and community programmes."
     />
     <title>Volunteer | Champions for Mental Health</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#456416" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Champions for Mental Health" />
+    <meta property="og:title" content="Volunteer | Champions for Mental Health" />
+    <meta property="og:description" content="Share your time, skills or lived experience expertise to support mental health advocacy and community programmes." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="logo" href="index.html">
-          <span class="logo-mark">C</span>
-          <span>CHAMPIONS FOR MENTAL HEALTH</span>
+          <img src="images/logo.png" alt="Champions for Mental Health International" />
         </a>
         <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
         <nav class="nav-links">
@@ -28,10 +35,13 @@
           <a href="donate.html">Donation</a>
           <a href="contact.html">Contact</a>
         </nav>
-        <div class="nav-actions"><a class="button" href="contact.html">Get Help</a></div>
+        <div class="nav-actions">
+          <a class="button button-cta nav-join" href="account.html?mode=register">Join</a>
+          <a class="button nav-help" href="contact.html">Get Help</a>
+        </div>
       </div>
     </header>
-    <main>
+    <main id="main">
       <section class="page-hero volunteer-hero">
         <div class="container">
           <span class="eyebrow eyebrow-light">Get involved</span>
@@ -55,24 +65,34 @@
               <li>Assist with events, communications or research.</li>
             </ul>
           </div>
-          <form class="form-card demo-form">
+          <form
+            class="form-card netlify-form"
+            name="volunteer"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="volunteer" />
+            <p hidden>
+              <label>Leave this empty: <input name="bot-field" /></label>
+            </p>
             <h2>Volunteer interest form</h2>
             <div class="field">
               <label for="name">Full name</label>
-              <input id="name" required />
+              <input id="name" name="name" required />
             </div>
             <div class="field">
               <label for="email">Email address</label>
-              <input id="email" type="email" required />
+              <input id="email" name="email" type="email" required />
             </div>
             <div class="field">
               <label for="phone">Phone number</label>
-              <input id="phone" />
+              <input id="phone" name="phone" />
             </div>
             <div class="field">
               <label for="interest">Area of interest</label>
-              <select id="interest">
-                <option>Choose an area</option>
+              <select id="interest" name="interest">
+                <option value="">Choose an area</option>
                 <option>Community awareness</option>
                 <option>Youth education</option>
                 <option>Research</option>
@@ -82,12 +102,10 @@
             </div>
             <div class="field">
               <label for="message">How would you like to contribute?</label>
-              <textarea id="message"></textarea>
+              <textarea id="message" name="message"></textarea>
             </div>
             <button class="button" type="submit">Submit interest</button>
-            <div class="form-message">
-              Thank you. Connect this form to a secure form handler before launch.
-            </div>
+            <div class="form-message">Thank you. Your details have been sent. We will be in touch soon.</div>
           </form>
         </div>
       </section>
@@ -100,7 +118,7 @@
             <p>Be part of a community working towards a more understanding and supportive world.</p>
           </div>
           <div class="button-row">
-            <a class="button button-cta" href="register.html">Join us</a>
+            <a class="button button-cta" href="account.html?mode=register">Join us</a>
             <a class="button button-outline-light" href="donate.html">Make a donation</a>
           </div>
         </div>
@@ -111,8 +129,7 @@
         <div class="footer-grid">
           <div>
             <a class="logo" href="index.html">
-              <span class="logo-mark">C</span>
-              <span>CHAMPIONS FOR MENTAL HEALTH</span>
+              <img src="images/logo.png" alt="Champions for Mental Health International" />
             </a>
             <p>
               Advocacy, education and research for a world where mental health is understood and
@@ -134,8 +151,9 @@
               <a href="volunteer.html">Volunteer</a>
               <a href="donate.html">Donate</a>
               <a href="news.html">News & insights</a>
-              <a href="register.html">Create an account</a>
-              <a href="login.html">Member login</a>
+              <a href="newsletter.html">Newsletter</a>
+              <a href="account.html?mode=register">Create an account</a>
+              <a href="account.html?mode=signin">Member login</a>
             </div>
           </div>
           <div>

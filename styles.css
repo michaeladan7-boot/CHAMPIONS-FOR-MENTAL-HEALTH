@@ -453,6 +453,12 @@ select {
   display: block;
 }
 
+/* Red version, used for sign-in and profile errors */
+.form-message.is-error {
+  background: #fbeaea;
+  color: #8a2a2a;
+}
+
 /* Form next to an information column (volunteer, contact) */
 .form-layout {
   display: grid;
@@ -560,6 +566,11 @@ select {
   gap: 9px;
 }
 
+/* Join button in the header: yellow call to action next to Get Help */
+.nav-join {
+  white-space: nowrap;
+}
+
 /* Hamburger button (phones only) */
 .menu-toggle {
   display: none;
@@ -635,6 +646,11 @@ select {
   .nav-actions .button {
     padding: 8px 12px;
     white-space: nowrap;
+  }
+
+  /* On phones only Join stays in the bar. Get Help is still in the menu as Contact. */
+  .nav-help {
+    display: none;
   }
 }
 
@@ -1665,4 +1681,214 @@ select {
 /* Article page: space between the back link and the tag */
 .article-header .profile-back {
   margin-bottom: 20px;
+}
+
+
+/* --------------------------------------------------------------------------
+   5.7b  MENTAL HEALTH MONTH  (<section class="section month">)
+   -------------------------------------------------------------------------- */
+.month {
+  background: var(--green-dark);
+  color: #ffffff;
+}
+
+.month-text h2 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 12px 0 16px;
+}
+
+.month-text p {
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 26px;
+}
+
+.month-photo {
+  min-height: 300px;
+  border-radius: var(--radius);
+}
+
+
+/* --------------------------------------------------------------------------
+   8.5  SHARED: TWO FIELDS SIDE BY SIDE  (first / last name)
+   Put two .field blocks inside <div class="field-row">
+   -------------------------------------------------------------------------- */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8.6  CONTACT PAGE  (contact.html)
+   Info on the left, form on the right. Stacks on small screens.
+   -------------------------------------------------------------------------- */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.contact-info h2 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  letter-spacing: -0.025em;
+  margin: 0 0 12px;
+}
+
+.contact-intro {
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+.contact-info h3 {
+  color: var(--green-dark);
+  font-size: 1.3rem;
+  margin: 24px 0 8px;
+}
+
+.contact-info p {
+  color: var(--muted);
+  margin: 0 0 4px;
+}
+
+.contact-form h2 {
+  margin: 0 0 20px;
+}
+
+@media (max-width: 760px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8.7  NEWSLETTER PAGE  (newsletter.html)
+   -------------------------------------------------------------------------- */
+.newsletter-form h2 {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.newsletter-form .button {
+  width: 100%;
+}
+
+.newsletter-form .form-note {
+  margin-top: 14px;
+  text-align: center;
+}
+
+
+/* --------------------------------------------------------------------------
+   8.8  RESEARCH CARDS  (research.html)
+   Tall image area on top, text underneath. Replace the placeholder with an <img>.
+   -------------------------------------------------------------------------- */
+.research-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.research-card .research-photo {
+  height: 280px;
+}
+
+.research-info {
+  padding: 22px;
+}
+
+@media (max-width: 520px) {
+  .research-card .research-photo {
+    height: 200px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8.9  404 PAGE  (404.html)
+   -------------------------------------------------------------------------- */
+.not-found {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.not-found .button-row {
+  justify-content: center;
+}
+
+
+/* --------------------------------------------------------------------------
+   9.  ACCESSIBILITY
+   Skip link for keyboard users and a clear focus outline.
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--green-dark);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--cta);
+  outline-offset: 2px;
+}
+
+
+/* Anything marked hidden stays hidden, even if a class sets display */
+[hidden] {
+  display: none !important;
+}
+
+
+/* ==========================================================================
+   LOGO IMAGE (header + footer on every page)
+   The logo is images/logo.png. To make it bigger or smaller, change the
+   height numbers below.
+   ========================================================================== */
+.logo img {
+  height: 58px;
+  width: auto;
+  display: block;
+}
+
+/* The footer is dark, so the logo sits on a white card to stay readable */
+.site-footer .logo img {
+  height: 64px;
+  background: var(--white);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* Phone: slightly smaller logo so the Join button still fits */
+@media (max-width: 520px) {
+  .logo img {
+    height: 44px;
+  }
+
+  .site-footer .logo img {
+    height: 52px;
+  }
 }

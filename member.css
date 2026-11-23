@@ -1,0 +1,116 @@
+/* ==========================================================================
+   member.css — used only by profile.html (the signed-in member's profile)
+   Shared classes used: .container, .section, .card, .button, .button-outline,
+   .field, .form-card, .form-message, .form-note, .eyebrow, .text-link
+   ========================================================================== */
+
+/* ----- Layout: summary on the left, forms on the right ----- */
+.member-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.member-layout[hidden] {
+  display: none;
+}
+
+/* ----- Left column ----- */
+.member-aside {
+  display: grid;
+  gap: 20px;
+  position: sticky;
+  top: 100px;
+}
+
+.member-summary {
+  padding: 28px;
+  text-align: center;
+}
+
+.member-avatar {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green-dark);
+  color: var(--white);
+  font-family: "DM Serif Display", serif;
+  font-size: 2.2rem;
+}
+
+.member-name {
+  font-size: 1.7rem;
+  margin: 0 0 4px;
+  overflow-wrap: anywhere;
+}
+
+.member-email {
+  color: var(--muted);
+  margin: 0 0 4px;
+  overflow-wrap: anywhere;
+}
+
+.member-since {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 20px;
+}
+
+.member-summary .button {
+  margin-top: 4px;
+}
+
+.member-links {
+  padding: 24px;
+  display: grid;
+  gap: 10px;
+}
+
+.member-links h2 {
+  font-size: 1.3rem;
+  margin: 0 0 4px;
+}
+
+/* ----- Right column ----- */
+.member-main {
+  display: grid;
+  gap: 24px;
+}
+
+.member-title {
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.member-main .form-card h3 {
+  font-size: 1.4rem;
+  margin: 0 0 18px;
+}
+
+/* ----- Loading / signed-out message ----- */
+.member-status {
+  text-align: center;
+  color: var(--muted);
+  padding: 60px 0;
+}
+
+.member-status[hidden] {
+  display: none;
+}
+
+/* ----- Tablet and phone ----- */
+@media (max-width: 900px) {
+  .member-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .member-aside {
+    position: static;
+  }
+}

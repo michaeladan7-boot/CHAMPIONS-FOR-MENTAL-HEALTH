@@ -30,9 +30,41 @@ if (menuButton && nav) {
 
 
 // --------------------------------------------------------------------------
-// 2. Demo forms: show the thank-you message instead of submitting.
-//    Replace this with a real form service or backend before launch.
+// 2. Forms
+//    .netlify-form  Contact and volunteer forms. On the live Netlify site they send
+//                   a real submission. On your own computer (localhost or a file)
+//                   they only show the message, so nothing is sent while testing.
+//    .demo-form     Other forms that still only show the thank-you message.
 // --------------------------------------------------------------------------
+const isLiveSite = ["http:", "https:"].includes(location.protocol)
+  && !["localhost", "127.0.0.1"].includes(location.hostname);
+
+document.querySelectorAll(".netlify-form").forEach(form => {
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+    const message = form.querySelector(".form-message");
+    message.classList.remove("is-error");
+
+    if (isLiveSite) {
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(new FormData(form)).toString(),
+        });
+        if (!response.ok) throw new Error("Form not sent");
+      } catch (error) {
+        message.textContent = "Sorry, your message could not be sent. Please try again or email us.";
+        message.classList.add("is-error", "show");
+        return;
+      }
+    }
+
+    message.classList.add("show");
+    form.reset();
+  });
+});
+
 document.querySelectorAll(".demo-form").forEach(form => {
   form.addEventListener("submit", event => {
     event.preventDefault();
@@ -129,4 +161,43 @@ if (slider) {
 
   showSlide(0);
   startAutoplay();
+}
+
+
+// --------------------------------------------------------------------------
+// 4. Signed-in members: "Join" turns into "My profile"
+// Supabase keeps the login in localStorage under a key like sb-xxxx-auth-token.
+// If one is found, replace the Join / Create account links with My profile.
+// --------------------------------------------------------------------------
+function isSignedIn() {
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!/^sb-.+-auth-token$/.test(key)) continue;
+      const login = JSON.parse(localStorage.getItem(key));
+      if (login && login.access_token) return true;
+    }
+  } catch (error) {
+    // Storage can be blocked (private mode, file://). Treat as signed out.
+  }
+  return false;
+}
+
+if (isSignedIn()) {
+  // Header button
+  document.querySelectorAll(".nav-join").forEach(link => {
+    link.textContent = "My profile";
+    link.href = "profile.html";
+  });
+
+  // Other "Join us" / "Create an account" links are no longer needed
+  document.querySelectorAll('a[href*="mode=register"]:not(.nav-join)').forEach(link => {
+    link.hidden = true;
+  });
+
+  // "Member login" becomes "My profile"
+  document.querySelectorAll('a[href*="mode=signin"]').forEach(link => {
+    link.textContent = "My profile";
+    link.href = "profile.html";
+  });
 }

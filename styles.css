@@ -668,7 +668,7 @@ select {
   background-color: var(--green-soft);
   background-image:
     linear-gradient(var(--photo-overlay), var(--photo-overlay)),
-    url(images/bg\ placeholder.jpg);
+    url(images/Hero\ bg.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1177,6 +1177,7 @@ select {
 .gallery-item-large {
   grid-column: span 2;
   grid-row: span 2;
+  contain: content;
 }
 
 .gallery-item-wide {
